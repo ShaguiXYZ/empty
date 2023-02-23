@@ -1,0 +1,144 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "ngx-empty": {
+            "root": "",
+            "sourceRoot": "src",
+            "projectType": "application",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "allowedCommonJsDependencies": ["lodash", "util", "decimal.js", "iban", "rxjs/internal/operators/map"],
+                        "outputPath": "dist",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "tsConfig": "src/tsconfig.app.json",
+                        "polyfills": "src/polyfills.ts",
+                        "assets": ["src/assets", "src/favicon.ico", "src/.htaccess"],
+                        "styles": [
+                            "node_modules/@allianz/ngx-ndbx/css/ndbx-base.css",
+                            "node_modules/@allianz/ngx-ndbx/css/themes/ndbx.css",
+                            "node_modules/@aposin/ng-aquila/css/utilities.css",
+                            "src/styles.scss"
+                        ],
+                        "scripts": [],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
+                    },
+                    "configurations": {
+                        "local": {
+                            "optimization": false,
+                            "outputHashing": "none",
+                            "sourceMap": true,
+                            "namedChunks": true,
+                            "extractLicenses": false,
+                            "vendorChunk": true,
+                            "buildOptimizer": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.local.ts"
+                                }
+                            ]
+                        },
+                        "dev": {
+                            "optimization": false,
+                            "outputHashing": "none",
+                            "sourceMap": true,
+                            "namedChunks": true,
+                            "extractLicenses": false,
+                            "vendorChunk": true,
+                            "buildOptimizer": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.dev.ts"
+                                }
+                            ]
+                        },
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ]
+                        }
+                    },
+                    "defaultConfiguration": ""
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "ngx-empty:build",
+                        "port": 4201
+                    },
+                    "configurations": {
+                        "local": {
+                            "browserTarget": "ngx-empty:build:local"
+                        },
+                        "dev": {
+                            "browserTarget": "ngx-empty:build:dev"
+                        },
+                        "test": {
+                            "browserTarget": "ngx-empty:build:test"
+                        },
+                        "production": {
+                            "browserTarget": "ngx-empty:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "ngx-empty:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "karmaConfig": "./karma.conf.js",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "scripts": [],
+                        "styles": [
+                            "node_modules/@allianz/ndbx-styles/dist/patternlab.min.css",
+                            "node_modules/@angular/cdk/overlay-prebuilt.css",
+                            "src/styles.scss"
+                        ],
+                        "assets": ["src/assets", "src/favicon.ico", "src/.htaccess"],
+                        "codeCoverageExclude": ["/**/*mock*.ts", "/**/*stub*.ts"]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["src/app/*.ts", "src/**/*.html"],
+                        "fix": true,
+                        "ignorePath": ".eslintignore"
+                    }
+                }
+            }
+        }
+    },
+    "schematics": {
+        "@schematics/angular:component": {
+            "prefix": "app",
+            "style": "scss"
+        },
+        "@schematics/angular:directive": {
+            "prefix": "app"
+        }
+    },
+    "cli": {
+      "analytics": false
+    }
+}
