@@ -42,6 +42,7 @@
 		</resources>
 	</build>
 	<modules>
+		<module>rws-empty</module>
 		<module>bff-empty</module>
 		<module>ngx-empty</module>
 	</modules>
