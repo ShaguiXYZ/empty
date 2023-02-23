@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.shagui.empty</groupId>
+	<artifactId>mono-repo-empty</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<organization>
+		<name>Shagui</name>
+	</organization>
+	<parent>
+		<artifactId>mono-repo-parent</artifactId>
+		<groupId>com.shagui.parents</groupId>
+		<version>0.0.1-RELEASE</version>
+	</parent>
+	<properties>
+		<sonar.projectName>${project.artifactId}</sonar.projectName>
+		<sonar.projectKey>${project.artifactId}</sonar.projectKey>
+	</properties>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.yml</include>
+					<include>**/*.xml</include>
+					<include>**/*.sql</include>
+					<include>**/*.jpg</include>
+					<include>META-INF/spring.factories</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>*.key</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+	<modules>
+		<module>bff-empty</module>
+		<module>ngx-empty</module>
+	</modules>
+</project>
