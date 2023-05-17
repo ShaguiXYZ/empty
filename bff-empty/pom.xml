@@ -12,7 +12,7 @@
 		<relativePath />
 	</parent>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>9</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<deploy.plugin.version>2.8.2</deploy.plugin.version>
